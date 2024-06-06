@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>sharing centre || DRAMA</title>
+        <link rel="stylesheet" href="share_centre.css">
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" /> -->
+        <script src="theme.style.js"></script>
+        <script src="peerjs/unpkg.com_peerjs@1.5.1_dist_peerjs.min.js"></script>
+        <script src="socket.io/socket.io.js" ></script>
+        <script src="socket.js"></script>
+        <script src="share_centre.js"></script>
+    </head>
+    <body id="body_elem">
+        <div id="root">
+            <div id="island_card_1">
+                <div class="shadow" onclick="document.getElementById('island_card_1').style.display = 'none'"></div>
+                <div id="add_new_conversate_window">
+                    <h1 style="text-align: left;color: var(--primary-color);margin: 10px;">NEW CONTACT</h1>
+                    <div style="text-align: left;display: flex;flex-direction: row;align-items: center;">search with: name <label class="DRAswitch" >
+                        <input type="checkbox" class="switch_input" onclick='toggle_between_name_id()' />
+                        <span class="slider" ></span>
+                    </label> id</div>
+                    <input type="text" class="input_type_1" placeholder="type contact's name" id="ancw_name_inp" >
+                    <button class="button_type_1" onclick="search_contact()">search</button>
+                </div>
+            </div>
+            <div id="island_card_2">
+                <div class="shadow" onclick="document.getElementById('island_card_2').style.display = 'none'"></div>
+                <div style="width: 75%;background-color: #252525;height: fit-content;z-index: 10;padding: 10px;border-radius: 10px;">
+                    <div id="keys_show_ctx" style="border-bottom: 2px solid gray;" ></div>
+                    <div id="theme_colors" style="display: flex;flex-direction: row;gap: 8px;padding-top: 8px;justify-content: center;align-items: center;">
+                        <p style="color: white;">select theme color :</p>
+                        <div style="width: 25px;height: 25px;background-color: #ff8080;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#ff8080')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #80ff80;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#80ff80')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #8080ff;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#8080ff')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #ff00dd;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#ff00dd')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #9d00ff;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#9d00ff')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #00fffb;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#00fffb')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #c3ff00;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#c3ff00')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #ffa200;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#ffa200')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #009dff;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#009dff')" ></div>
+                        <div style="width: 25px;height: 25px;background-color: #600000;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#600000')" ></div>
+                    </div>
+                </div>
+            </div>
+            <div id="island_card_3">
+                <div class="shadow" onclick="document.getElementById('island_card_3').style.display = 'none'"></div>
+                <div id="new_contact_details" style="width: 75%;background-color: #252525;height: fit-content;z-index: 10;padding: 10px;border-radius: 10px;" ></div>
+            </div>
+            <div id="island_card_4">
+                <div class="shadow"></div>
+                <div id="call_connection_request">
+                    <h1 id="caller_data" style="margin-bottom: 8px;"></h1>
+                    <button class="button_type_1" style="background-color: #80ff80;color: white;border-color: #80ff80;margin-bottom: 8px;" id="answer_call" >answer</button>
+                    <button class="button_type_1" style="background-color: #ff8080;color: white;border-color: #ff8080;" id="reject_call" >decline</button>
+                </div>
+                <div id="wait_for_connection">
+                    <h1>connecting...</h1>
+                    <div class="roundable_loader" ></div>
+                </div>
+            </div>
+            <div id="main">
+                <div id="header">
+                    <div style="width: 50%;display: flex;flex-direction: row;align-items: center;">
+                        <button onclick="open_new_conversate_window()" class="circle_shadow_btn" >+</button>
+                        <div id="user_img" onclick="show_user_keys()" ></div>
+                        <p id="name_place" style="padding: 0 8px 0 8px;color: white;" ></p>
+                    </div>
+                    <div style="width: 50%;display: flex;justify-content: right;flex-direction: row;padding-right: 2%;" >
+                        <label class="DRAswitch" id="switch_theme">
+                            <input type="checkbox" class="switch_input" id="switch_theme_input" onclick='toggle_dark_theme()' />
+                            <span class="slider" id="switch_theme_slider" ></span>
+                        </label>
+                        <button onclick="open_new_conversate_window()" class="circle_shadow_btn" >+</button>
+                    </div>
+                </div>
+                <div id="msgs_ctx" style="height: 100%;"></div>
+                <div id="call_ctx" style="height: 100%;">
+                    <div style="display: flex;flex-direction: row;" >
+                        <video autoplay id="my_video_place" style="width: 50%;height: fit-content;"></video>
+                        <video autoplay id="someone_video_place" style="width: 50%;height: fit-content;"></video>
+                    </div><br />
+                    <div style="width: 100%;display: flex;flex-direction: row;justify-content: center;align-items: center;" >
+                        <p style="width: fit-content;" id="my_name_place" ></p>
+                        <button class="round_btn_call" style="background-color: #ff8080;" id="end_call_in_call_btn"><span class="material-symbols-outlined">
+                            call_end
+                            </span></button>
+                        <button class="round_btn_call" style="background-color: #00fffb;" id="open_notes_window_btn" onclick="document.getElementById('note_window').style.display = 'block';document.getElementById('new_todo_window').style.display = 'none'"><span class="material-symbols-outlined">
+                            edit_note
+                            </span></button>
+                        <button class="round_btn_call" style="background-color: #009dff;" id="open_new_todo_btn" onclick="document.getElementById('note_window').style.display = 'none';document.getElementById('new_todo_window').style.display = 'block'"><span class="material-symbols-outlined">
+                            checklist
+                            </span></button>
+                        <p id="someone_name_place"></p>
+                    </div>
+                    <div style="width: 100%;height: 100%;display: none;" id="note_window">
+                        <textarea maxlength="10000" placeholder="type a note (it's global in this room)" style="width: 100%;height: 100%;" id="call_txt_note"></textarea>
+                    </div>
+                    <div style="width: 100%;height: 100%;display: none;" id="new_todo_window">
+                        <input id="idea_name_incall" class="input_type_1" placeholder="type new idea name" >
+                        <textarea placeholder="type idea's details" class="input_type_1" style="transition: none;" id="todo_details_incall"></textarea>
+                        <button class="button_type_1" id="add_a_new_idea_incall">Add it</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

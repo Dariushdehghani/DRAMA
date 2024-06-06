@@ -1,0 +1,385 @@
+:root {
+    --primary-color: #FF8080; 
+    --bg-primary-color: #FF808022;
+    --second-color: #FF808055;
+    --third-color: #FF808077;
+
+    --color-4: var(--primary-color);
+    --color-2: #80ff80;
+}
+
+body {
+    font-family: sans-serif;
+    transition: 250ms background;
+}
+
+* {
+    color: white;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+#root {
+    background-color: var(--bg-primary-color);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#two_card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    padding: 10px 2px 10px 2px;
+}
+
+.main_card1 {
+    display: block;
+    background-color: var(--second-color);
+    border-radius: 10px;
+    width: 49%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    background-color: var(--second-color);
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+.toggle2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    padding-left: 8px;
+    gap: 8px;
+}
+
+.toggle_btn {
+    background-color: transparent;
+    margin: 0;
+    border: none;
+    height: fit-content;
+}
+
+.toggle_btn:hover {
+    background-color: var(--third-color);
+}
+
+.toggle_btn2 {
+    background-color: #ffffff44;
+    border: none;
+    border-radius: 100px;
+    padding: 0 10px 0 10px;
+}
+
+.toggle_btn2:hover {
+    box-shadow: #ffffff22 0 5px 1rem;
+}
+
+.DRAswitch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 2px;
+}
+  
+.DRAswitch .switch_input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--second-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+  
+.switch_input:checked + .slider {
+    background-color: var(--primary-color);
+}
+  
+.switch_input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.DRAswitch:hover {
+    opacity: .8;
+}
+
+#switch_theme_slider {
+    background-color: #25252525;
+}
+
+#switch_theme_input:checked + #switch_theme_slider {
+    background-color: blueviolet;
+}
+
+#switch_theme_input:checked + #switch_theme_slider::before {
+    background-color: #25252590;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+.gray {
+    color: white;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.button_shape_form1 {
+    background-color: var(--primary-color);
+    color: white;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: var(--third-color) 0 5px 10px;
+}
+
+.button_shape_form1:hover {
+    opacity: 0.6;
+}
+
+#new_todo_card {
+    background-color: #252525;
+    width: 50%;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 50%;
+    overflow-y: auto;
+}
+
+#todo_details_card {
+    background-color: white;
+    width: 30%;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+    height: 50%;
+    overflow-y: auto;
+}
+
+.steps_con_dt {
+    background-color: #80808055;
+    border-bottom:4px solid var(--primery-color-dt);
+    margin: 8px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#island_card_1 {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+#island_card_2 {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+#description_ctx_dt {
+    display: inline-block;
+    background-color: #80808040;
+    padding: 4px;
+    border-radius: 10px;
+    border: 2px solid gray;
+}
+
+.input_type_1 {
+    background-color: var(--second-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    width: 95%;
+    transition: all 500ms;
+    outline: none;
+    color: black;
+}
+
+.input_type_1::placeholder {
+    color: var(--third-color);
+}
+
+.button_type_2 {
+    border: 2px solid var(--primary-color);
+    background-color: transparent;
+    font-size: medium;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 1s;
+    margin: 8px;
+}
+
+.button_type_2:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#root_2, #root_3 {
+    display: none;
+}
+
+.todo_card_1 {
+    background-color: var(--third-color);
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    border-bottom:2px dashed var(--primary-color);
+    font-family: cursive;
+}
+
+.todo_card_1:hover {
+    opacity: 0.8;
+}
+
+.todo_card_2 {
+    background-color: blueviolet;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    border-bottom:2px dashed rgb(78, 22, 130);
+    font-family: cursive;
+}
+
+.transition_background {
+    transition: background 1s;
+}
+
+.todo_card_2:hover {
+    opacity: 0.8;
+}
+
+input[type='checkbox'] {
+    accent-color: var(--primary-color);
+}
+
+.FAB_place {
+    position: fixed;
+    right: 8px;
+    bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    z-index: 5;
+}
+
+#big_fab_btn:focus {
+    animation: rotate 1s;
+}
+
+#big_fab_btn:hover {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(90deg);}
+}
+
+#one_card {
+    height: 50%;
+    width: 100%;
+}
+
+.main_card2 {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    height: 98%;
+    margin-top: 8px;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.main_card2:hover {
+    opacity: 0.8;
+}
+
+.idea_card {
+    background-color: #ffffff44;
+    border-bottom: 3px dashed #ffffff77;
+}
+
+@media only screen and (max-width: 672px) {
+    #two_card{
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+    .main_card1 {
+        width: 100%;
+        height: auto;
+    }
+    #root {
+        overflow-x: auto;
+    }
+}

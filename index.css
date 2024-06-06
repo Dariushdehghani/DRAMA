@@ -1,0 +1,141 @@
+@font-face {
+    font-family: Rubic-Bubbles;
+    src: url(RubikBubbles-Regular.ttf);
+}
+
+:root {
+    --color-1:#FF8080;
+    --color-2:#FFCF96;
+    --color-3:#F6FDC3;
+    --color-4:#CDFAD5;
+}
+
+*{
+    margin: 0;
+    transition: all 300ms;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: sans-serif;
+}
+
+#header {
+    text-align: center;
+    background-color: var(--color-1);
+    padding: 300px;
+    font-family: Rubic-Bubbles;
+}
+
+.sbtn {
+    background-color: var(--color-2);
+    border: none;
+    color: var(--color-1);
+    border-radius: 10px;
+    margin-top: 60px;
+    padding: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#main {
+    background-color: var(--color-3);
+    color: var(--color-1);
+    text-align: center;
+}
+
+#main_header {
+    top: 0;
+    position: sticky;
+    padding: 10px;
+    background-color: var(--color-2);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#gif_1{
+    animation: transit_motion 4s infinite;
+}
+
+@keyframes transit_motion {
+    0%{
+        margin-left: 0;
+    }
+    50%{
+        margin-left: 50px;
+    }
+    75%{
+        margin-left: 25px;
+    }
+    100%{
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    *{
+        font-size: 40px;
+    }
+    h1{
+        font-size: 70px;
+    }
+    .sbtn{
+        margin-top: 100px;
+        padding: 30px;
+    }
+    #main_header {
+        padding: 30px;
+    }
+    #set-first, #set_second {
+        flex-direction: column;
+    }
+}
+
+#footer {
+    text-align: center;
+    background-color: var(--color-4);
+    color: white;
+}
+
+.set-right {
+    text-align: center;
+    width: 40%;
+}
+
+.set-left {
+    text-align: left;
+    width: 50%;
+    margin-left: 50px;
+}
+
+#set-first {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#set_second {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sthbtn {
+    background-color: aquamarine;
+    color: green;
+}
+
+.sndbtn {
+    background-color: var(--color-1);
+    color: var(--color-2);
+    margin: 8px;
+    margin-top: 0;
+}
