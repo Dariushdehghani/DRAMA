@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>sign in || DRAMA</title>
+        <link rel="stylesheet" href="signin.css">
+        <script src="socket.io/socket.io.js" ></script>
+        <script src="socket.js" ></script>
+        <script src="index.js" ></script>
+        <script src="signin.style.js" ></script>
+    </head>
+    <body>
+        <div class="main_card" id="mc1">
+            <h1 style="border-bottom: 4px solid var(--color-2);margin-bottom: 0;color: var(--color-2);">Get Started</h1>
+            <div id="toggle">
+                <button class="toggle_btn tbs" id="toggle_btn_s" onclick="toggled('s')" >Sign Up</button>
+                <button class="toggle_btn" id="toggle_btn_l" onclick="toggled('l')" >Log In</button>
+            </div>
+            <div id="signup_card" >
+                <input type="usernmame" onchange="this.style.backgroundColor = '#ffcf9640'" id="signup_name" class="input_type_1" placeholder="type a username like jake, /..."><br />
+                <input type="email" onchange="this.style.borderColor = 'var(--color-2)';this.style.backgroundColor = '#ffcf9640'" id="signup_email" class="input_type_1" placeholder="type an email like example@e.com"><br />
+                <input type="password" onchange="this.style.borderColor = 'var(--color-2)';this.style.backgroundColor = '#ffcf9640'" class="input_type_1" id="signup_password" placeholder="type a secure password"><br />
+                <button onclick="submit_signup()" class="button_type_1" >submit</button>
+            </div>
+            <div id="login_card" >
+                <input type="usernmame" onchange="this.style.borderColor = 'var(--color-2)';this.style.backgroundColor = '#ffcf9640'" id="login_name" class="input_type_1" placeholder="type your username like jake, /..."><br />
+                <input type="password" onchange="this.style.borderColor = 'var(--color-2)';this.style.backgroundColor = '#ffcf9640'" id="login_password" class="input_type_1" placeholder="type your password"><br />
+                <button onclick="submit_login()" class="button_type_1" >submit</button>
+            </div>
+        </div>
+        <div class="main_card" id="mc2">
+            <h1 style="border-bottom: 4px solid var(--color-2);margin-bottom: 0;color: var(--color-2);">HOW TO GET STARTED?</h1>
+            <h2>first, you have three keys for access to another users:</h2>
+            <p class="text_type_1">1. this key is for have a chat with everyone you want:</p><p id="first_key_context" ></p><br />
+            <p class="text_type_1">2. this key is for calls and video calls, you can have it when you went to your Dashboard</p><br />
+            <p class="text_type_1">3. this key is a multikey, you can share it to anyone and they can chat an have calls with you</p><p id="third_key_context"></p><br />
+            <p class="text_type_2"> ! first and second keys change every session but third key doesn't.</p>
+            <a href="/home" ><button class="button_type_1" >ok! i get it</button></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home || DRAMA</title>
+        <link rel="stylesheet" href="home.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <script src="theme.style.js"></script>
+        <script src="socket.io/socket.io.js" ></script>
+        <script src="peerjs/unpkg.com_peerjs@1.5.1_dist_peerjs.min.js"></script>
+        <script src="socket.js"></script>
+        <script src="home.js" ></script>
+    </head>
+    <body id="body_elem">
+        <div id="root">
+            <div class="FAB_place" >
+                <button class="button_shape_form1" onclick="new_todo_file()">+</button>
+            </div>
+            <div id="island_card_1">
+                <div onclick="close_add_todo_window()"  class="shadow"></div>
+                <div id="new_todo_card">
+                    <button onclick="close_add_todo_window()" style="background-color: transparent;border: none;color: white;" >x</button>
+                    <h1 style="margin: 10px;position: sticky;top: 0;background-color: #252525;margin: 0;width: 100%;">ADD A NEW TO-DO</h1>
+                    <input id="new_todo_title" class="input_type_1" placeholder="type your todo title">
+                    <textarea id="new_todo_description" class="input_type_1" placeholder="Description" ></textarea>
+                    <p>steps</p>
+                    <div id="steps_context">
+                        <button onclick="add_step_to_todoCreator_page()" style="background-color: transparent;border: none;">+ add a step</button>
+                    </div>
+                    <p class="gray">more steps = heavier file</p>
+                    <button class="button_type_2" onclick="addit_to_file()" >add it</button>
+                </div>
+            </div>
+            <div id="island_card_2" >
+                <div class="shadow" onclick="close_todo_details_window()"></div>
+                <div id="todo_details_card">
+                    <h1 id="todo_details_title"></h1>
+                    <div id="checkbox_ctx_dt"></div><button style="display: inline;border: none;background-color: transparent;" onclick="close_todo_details_window()" >x</button><br />
+                    <p id="description_ctx_dt"></p>
+                    <div id="steps_ctx_dt"></div>
+                </div>
+            </div>
+            <div id="two_card" >
+                <div class="main_card1">
+                    <h1 style="padding: 10px;background-color: var(--primary-color);margin-top: 0;" id="name_place"></h1>
+                    <div class="toggle">
+                        <button onclick="show_today_card()" class="toggle_btn" id="toggle_btn_1_1">Today</button>
+                        <button onclick="show_file_card()" class="toggle_btn" id="toggle_btn_1_3">settings</button>
+                    </div>
+                    <div id="root_1">
+                        <div>
+                            <h2>Don't worry, today is going to be a really good day!</h2>
+                            <h3>Today</h3>
+                            <p id="time_now"></p>
+                            <p id="calander_date" ></p>
+                        </div>
+                    </div>
+                    <div id="root_2">
+                        <button class="button_type_2" onclick="download_userdaily_file()" >downlowd your file</button>
+                        <button class="button_type_2" onclick="del_userdaily_file()" >empty your cache todos</button>
+                        <input type="file" id="upload_file_input" style="display: none;" onchange="last_file_loaded(this)">
+                        <button class="button_type_2" onclick="document.getElementById('upload_file_input').click()" >load past file</button>
+                        <button class="button_type_2" onclick="logout_user_account()">logout</button><br />
+                        <div id="theme_colors" style="display: flex;flex-direction: row;gap: 8px;padding-top: 8px;justify-content: center;align-items: center;">
+                            <p style="color: white;">select theme color :</p>
+                            <div style="width: 25px;height: 25px;background-color: #ff8080;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#ff8080')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #80ff80;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#80ff80')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #8080ff;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#8080ff')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #ff00dd;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#ff00dd')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #9d00ff;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#9d00ff')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #00fffb;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#00fffb')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #c3ff00;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#c3ff00')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #ffa200;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#ffa200')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #009dff;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#009dff')" ></div>
+                            <div style="width: 25px;height: 25px;background-color: #600000;padding: 2px;border-radius: 10px;" onclick="change_theme_color('#600000')" ></div>
+                        </div><br />
+                        <label class="DRAswitch" id="switch_theme">
+                            <input type="checkbox" class="switch_input" id="switch_theme_input" onclick='toggle_dark_theme()' />
+                            <span class="slider" id="switch_theme_slider" ></span>
+                        </label><br />
+                        <a style="color: var(--primary-color);" href="/how_to_use" >How to use the app?</a>
+                        <p>made by DRACO (<b>Dar</b>iush <b>D</b>ehghani <b>Co.</b>)</p>
+                    </div>
+                </div>
+                <div class="main_card1" ondragover="event.preventDefault()" ondrop="drop_idea(event)">
+                    <h1 style="padding: 10px;background-color: var(--primary-color);margin-top: 0;">TO-DOs</h1>
+                    <div id="e_no_todo">
+                        <p class="gray">no todos yet, add a new todo</p>
+                        <div style="width: 100%;text-align: center;">
+                            <button class="button_shape_form1" onclick="new_todo_file()">+</button>
+                        </div>
+                    </div>
+                    <div id="todos_show_ctx"></div>
+                    <button class="button_shape_form1" onclick="user_daily_update()" ><span class="material-symbols-outlined">
+                        refresh
+                        </span></button>
+                </div>
+            </div>
+            <div id="two_card">
+                <div style="margin-top: 8px;height: 100%;display: flex;justify-content: center;align-items: center;" class="main_card1">
+                    <div id="keys_show_ctx" onclick="window.location.href = '/sharing_centre'" >
+                        <h1>DRAMA SHARE CENTRE</h1>
+                        you can click here to go to sharing centre page (calls will be shown here too!)
+                        <h3 id="key_1_place" style="color: var(--primary-color);" ></h3>
+                        <h3 id="key_2_place" style="color: var(--primary-color);" ></h3>
+                        <h3 id="key_3_place" style="color: var(--primary-color);" ></h3>
+                    </div>
+                    <div id="call_show_ctx" style="display: none;">
+                        <h1 id="user_calling_name_space"></h1>
+                    </div>
+                </div>
+                <div class="main_card1" style="height: 97%; margin-top: 8px;">
+                    <h1 style="color: var(--primary-color);padding: 0 0 10px 10px;">Ideas</h1>
+                    <div id="ideas_ctx_card">
+                        
+                    </div>
+                    <p class="gray">drag and drop the items to the to-do card</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
