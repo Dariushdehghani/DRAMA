@@ -5,7 +5,8 @@
   "main": "App.js",
   "scripts": {
     "test": "node App.js",
-    "start": "node App.js"
+    "start": "node App.js",
+    “build”: “cd client && npm install && npm run build”
   },
   "author": "DRA (Dariush Dehghani Farghani)",
   "license": "ISC",
